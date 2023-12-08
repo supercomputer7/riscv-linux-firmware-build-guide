@@ -331,11 +331,20 @@ with `/root` being created.
 # Boot!
 
 ```sh
-qemu-system-riscv64 -nographic -machine virt -kernel linux-6.6.4/arch/riscv/boot/Image -append "console=ttyS0 root=/dev/vda" -m 2048 -device e1000e,netdev=net0 -netdev user,id=net0,hostfwd=tcp::2222-:22,net=192.168.76.0/24,dhcpstart=192.168.76.9 -drive file=$ENV_DIR/rootfs.img,format=raw,id=hd0 -device virtio-blk-device,drive=hd0
+qemu-system-riscv64 -nographic -machine virt \
+                    -kernel linux-6.6.4/arch/riscv/boot/Image \
+                    -append "console=ttyS0 root=/dev/vda" \
+                    -m 2048 \
+                    -device e1000e,netdev=net0 \
+                    -netdev user,id=net0,hostfwd=tcp::2222-:22,net=192.168.76.0/24,dhcpstart=192.168.76.9 \
+                    -drive file=$ENV_DIR/rootfs.img,format=raw,id=hd0 \
+                    -device virtio-blk-device,drive=hd0
 ```
 
 # Sources & Credits
 
 [1] Build basic Linux+Busybox QEMU RISC-V image - https://github.com/darchr/riscv-full-system/blob/main/qemu.md
+
 [2] Optional Nice & Dumb DHCP client I used during writing of this guide, just to get the allocated IP and the router IP from the DHCP server, on the screen - https://github.com/anryko/daft-dhcp-client
+
 [3] Cross-compile GCC toolchain with Musl-libc - https://github.com/richfelker/musl-cross-make
