@@ -18,7 +18,7 @@ With that being said, let's get this to work!
 
 ## Install basic toolchain
 
-On my Arch-based Linux systems I did:
+On my Arch-based Linux system I did:
 ```sh
 pacman -S gcc make flex bison autoconf automake
 ```
